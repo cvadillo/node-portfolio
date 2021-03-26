@@ -17,12 +17,28 @@ const promptUser = () => {
 			{
 				type: 'input',
 				name: 'name',
-				message: 'What is your name?'
+				message: 'What is your name?',
+				validate: nameInput => {
+					if (nameInput) {
+						return true;
+					} else {
+						console.log('I need yo name, Son!');
+						return false;
+					}
+				}
 			},
 			{
 				type: 'input',
 				name: 'github',
-				message: 'Enter your GitHub Username'
+				message: 'Enter your GitHub Username',
+				validate: githubInput => {
+					if (githubInput) {
+						return true;
+					} else {
+						console.log('If you wanna wrangle GitHub Cats, enter your username!');
+						return false;
+					}
+				}
 			},
 			{
 				type: 'input',
@@ -48,12 +64,28 @@ Add a New Project
 			{
 				type: 'input',
 				name: 'name',
-				message: 'What is the name of your project?'
+				message: 'What is the name of your project?',
+				validate: projectInput => {
+					if (projectInput) {
+						return true;
+					} else {
+						console.log('Projects without names make me a sad Panda :-(');
+						return false;
+					}
+				}
 			},
 			{
 				type: 'input',
 				name: 'description',
-				message: 'Please describe your project (Required):'
+				message: 'Please describe your project (Required):',
+				validate: desInput => {
+					if (desInput) {
+						return true;
+					} else {
+						console.log('How will you make it in this world with no description?');
+						return false;
+					}
+				}
 			},
 			{
 				type: 'checkbox',
@@ -64,7 +96,15 @@ Add a New Project
 			{
 				type: 'input',
 				name: 'link',
-				message: 'Enter the GitHub link to your project. (Required)'
+				message: 'Enter the GitHub link to your project. (Required)',
+				validate: gitLinkInput => {
+					if (gitLinkInput) {
+						return true;
+					} else {
+						console.log('How will all the pretty people see your project without a link?');
+						return false;
+					}
+				}
 			},
 			{
 				type: 'confirm',
@@ -79,7 +119,7 @@ Add a New Project
 				default: false
 			}
 		])
-	
+
 		.then(projectData => {
 				portfolioData.projects.push(projectData);
 				if (projectData.confirmAddProject) {
